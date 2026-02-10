@@ -1,101 +1,124 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Natilla 💙</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>Natilla 💙</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #bfe9ff, #e6f7ff);
-      text-align: center;
-    }
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
 
-    h1 {
-      color: #2b6cb0;
-      margin: 20px 10px;
-    }
+body{
+  font-family:Arial, sans-serif;
+  height:100vh;
+  overflow-x:hidden;
+}
 
-    video {
-      width: 95%;
-      max-width: 500px;
-      border-radius: 18px;
-      margin: 10px auto 20px;
-      display: block;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
-    }
+/* VIDEO FONDO */
+.video-bg{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:-1;
+  overflow:hidden;
+}
 
-    .galeria {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 10px;
-      padding: 15px;
-    }
+.video-bg video{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
 
-    .galeria img {
-      width: 100%;
-      border-radius: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    }
+/* CAPA OSCURA PARA LEGIBILIDAD */
+.overlay{
+  background:rgba(0,0,0,0.35);
+  min-height:100vh;
+  text-align:center;
+  color:white;
+  padding-bottom:40px;
+}
 
-    .pregunta {
-      font-size: 22px;
-      margin: 20px;
-      color: #1a365d;
-      font-weight: bold;
-    }
+h1{
+  margin:20px;
+  color:#cce7ff;
+}
 
-    .botones {
-      position: relative;
-      height: 140px;
-    }
+.galeria{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:10px;
+  padding:15px;
+}
 
-    button {
-      padding: 15px 25px;
-      font-size: 18px;
-      border: none;
-      border-radius: 30px;
-      cursor: pointer;
-    }
+.galeria img{
+  width:100%;
+  border-radius:15px;
+  box-shadow:0 4px 10px rgba(0,0,0,.3);
+}
 
-    #si {
-      background: #63b3ed;
-      color: white;
-      transition: transform 0.3s;
-    }
+.pregunta{
+  font-size:22px;
+  margin:20px;
+  font-weight:bold;
+}
 
-    #no {
-      background: #a0aec0;
-      color: white;
-      position: absolute;
-      top: 60px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
+.botones{
+  position:relative;
+  height:140px;
+}
 
-    .mensaje-final {
-      display: none;
-      padding: 25px;
-      font-size: 18px;
-      color: #2b6cb0;
-      line-height: 1.6;
-    }
-  </style>
+button{
+  padding:15px 25px;
+  font-size:18px;
+  border:none;
+  border-radius:30px;
+  cursor:pointer;
+}
+
+#si{
+  background:#63b3ed;
+  color:white;
+  transition:transform .3s;
+}
+
+#no{
+  background:#a0aec0;
+  color:white;
+  position:absolute;
+  top:60px;
+  left:50%;
+  transform:translateX(-50%);
+}
+
+.mensaje-final{
+  display:none;
+  padding:30px;
+  font-size:18px;
+  line-height:1.6;
+}
+</style>
 </head>
 
 <body>
 
-  <h1>Natilla 💙</h1>
-
-  <!-- VIDEO -->
+<!-- VIDEO DE FONDO -->
+<div class="video-bg">
   <video autoplay loop muted playsinline>
     <source src="video.mp4" type="video/mp4">
-    Tu navegador no soporta video.
   </video>
+</div>
 
-  <!-- GALERÍA -->
+<!-- CONTENIDO -->
+<div class="overlay">
+
+  <h1>Natilla 💙</h1>
+
   <div class="galeria">
     <img src="fotos/nos1.jpg">
     <img src="fotos/nos2.jpg">
@@ -128,39 +151,36 @@
     💙✨
   </div>
 
-  <script>
-    let escala = 1;
-    let frases = [
-      "di que sí xfiii 🥺",
-      "amoooorrr 💙",
-      "say yes yes 😘",
-      "gordita hermosa 💕",
-      "te regalo un abrazo si dices que sí 🤍"
-    ];
-    let i = 0;
+</div>
 
-    function moverNo() {
-      const no = document.getElementById("no");
-      no.style.top = Math.random() * 80 + "px";
-      no.style.left = Math.random() * 80 + "px";
+<script>
+let escala=1;
+let frases=[
+"di que sí xfiii 🥺",
+"amoooorrr 💙",
+"say yes yes 😘",
+"gordita hermosa 💕",
+"te regalo un abrazo si dices que sí 🤍"
+];
+let i=0;
 
-      document.querySelector(".pregunta").innerText =
-        frases[i % frases.length];
-      i++;
+function moverNo(){
+let no=document.getElementById("no");
+no.style.top=Math.random()*80+"px";
+no.style.left=Math.random()*80+"px";
+document.querySelector(".pregunta").innerText=frases[i%frases.length];
+i++;
+escala+=0.15;
+document.getElementById("si").style.transform=`scale(${escala})`;
+}
 
-      escala += 0.15;
-      document.getElementById("si").style.transform =
-        `scale(${escala})`;
-    }
-
-    function aceptar() {
-      document.querySelector(".galeria").style.display = "none";
-      document.querySelector("video").style.display = "none";
-      document.querySelector(".botones").style.display = "none";
-      document.querySelector(".pregunta").style.display = "none";
-      document.getElementById("final").style.display = "block";
-    }
-  </script>
+function aceptar(){
+document.querySelector(".galeria").style.display="none";
+document.querySelector(".botones").style.display="none";
+document.querySelector(".pregunta").style.display="none";
+document.getElementById("final").style.display="block";
+}
+</script>
 
 </body>
 </html>
