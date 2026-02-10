@@ -9,8 +9,30 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(180deg, #bfe9ff, #e6f7ff);
       text-align: center;
+      overflow-x: hidden;
+    }
+
+    /* VIDEO DE FONDO */
+    .video-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -2;
+    }
+
+    /* CAPA AZUL SUAVE SOBRE EL VIDEO */
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(191, 233, 255, 0.75);
+      z-index: -1;
     }
 
     h1 {
@@ -39,6 +61,7 @@
     .galeria img {
       width: 100%;
       border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .pregunta {
@@ -84,9 +107,17 @@
 
 <body>
 
+  <!-- VIDEO DE FONDO -->
+  <video class="video-bg" autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
+  </video>
+
+  <!-- CAPA AZUL -->
+  <div class="overlay"></div>
+
   <h1>Natilla 💙</h1>
 
-  <!-- BOTÓN DE MÚSICA -->
+  <!-- BOTÓN MÚSICA -->
   <button class="music-btn" onclick="playMusic()">▶ Reproducir música</button>
 
   <!-- AUDIO -->
@@ -156,8 +187,7 @@
     }
 
     function playMusic() {
-      const audio = document.getElementById("music");
-      audio.play();
+      document.getElementById("music").play();
     }
   </script>
 
