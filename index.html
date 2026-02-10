@@ -1,196 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<title>Natilla 💙</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <title>💙 Para ti 💙</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  height: 100%;
-  font-family: Arial, sans-serif;
-  text-align: center;
-}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
-/* VIDEO FONDO — FORZADO */
-#bg-video {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: -10;
-}
+    body {
+      height: 100vh;
+      overflow: hidden;
+    }
 
-/* OCULTAR CONTROLES */
-#bg-video::-webkit-media-controls {
-  display: none !important;
-}
-#bg-video {
-  pointer-events: none;
-}
+    /* VIDEO DE FONDO */
+    video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
 
-/* CAPA AZUL */
-#overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(191, 233, 255, 0.75);
-  z-index: -5;
-}
+    /* CONTENEDOR */
+    .contenedor {
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background: rgba(0, 0, 0, 0.35);
+      text-align: center;
+      padding: 20px;
+    }
 
-h1 {
-  color: #2b6cb0;
-  margin: 20px 0;
-}
+    h1 {
+      color: white;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
 
-.music-btn {
-  background: #2b6cb0;
-  color: white;
-  border: none;
-  border-radius: 30px;
-  padding: 14px 26px;
-  font-size: 18px;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
+    button {
+      padding: 15px 25px;
+      margin: 10px;
+      font-size: 1.1rem;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+    }
 
-.galeria {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  padding: 15px;
-}
+    #si {
+      background-color: #4CAF50;
+      color: white;
+    }
 
-.galeria img {
-  width: 100%;
-  border-radius: 14px;
-}
+    #no {
+      background-color: #f44336;
+      color: white;
+    }
 
-.pregunta {
-  font-size: 22px;
-  margin: 20px;
-  color: #1a365d;
-}
+    #playMusic {
+      background-color: #2196F3;
+      color: white;
+      margin-bottom: 20px;
+    }
 
-.botones {
-  position: relative;
-  height: 140px;
-}
-
-button {
-  padding: 14px 26px;
-  font-size: 18px;
-  border: none;
-  border-radius: 30px;
-  cursor: pointer;
-}
-
-#si {
-  background: #63b3ed;
-  color: white;
-  transition: transform 0.3s;
-}
-
-#no {
-  background: #a0aec0;
-  color: white;
-  position: absolute;
-  right: 20%;
-}
-
-#final {
-  display: none;
-  padding: 25px;
-  font-size: 18px;
-  color: #2b6cb0;
-}
-</style>
+    #final {
+      display: none;
+      color: white;
+      font-size: 1.3rem;
+      margin-top: 20px;
+      max-width: 500px;
+    }
+  </style>
 </head>
 
 <body>
 
-<!-- VIDEO FONDO (CON CONTROLS FORZADOS) -->
-<video id="bg-video" autoplay muted loop playsinline controls>
-  <source src="video.mp4" type="video/mp4">
-</video>
+  <!-- VIDEO DE FONDO -->
+  <video autoplay muted loop playsinline>
+    <source src="video.mp4" type="video/mp4">
+  </video>
 
-<div id="overlay"></div>
+  <!-- MUSICA -->
+  <audio id="musica" loop>
+    <source src="musica.mp3" type="audio/mpeg">
+  </audio>
 
-<h1>Natilla 💙</h1>
+  <div class="contenedor">
+    <button id="playMusic">🎵 Reproducir música</button>
 
-<button class="music-btn" onclick="playMusic()">▶ Reproducir música</button>
+    <h1 id="pregunta">¿Quieres estar conmigo siempre? 💙</h1>
 
-<audio id="music">
-  <source src="musica.mp3" type="audio/mpeg">
-</audio>
+    <div>
+      <button id="si">Sí 💙</button>
+      <button id="no">No 😢</button>
+    </div>
 
-<div class="galeria">
-  <img src="nos1.jpg">
-  <img src="nos2.jpg">
-  <img src="nos3.jpg">
-  <img src="nos4.jpg">
-  <img src="nos5.jpg">
-  <img src="nos6.jpg">
-  <img src="pochacco1.jpg">
-  <img src="pochacco2.jpg">
-  <img src="pochacco3.jpg">
-  <img src="pochacco4.jpg">
-  <img src="pochacco5.jpg">
-</div>
+    <div id="final">
+      💙✨<br><br>
+      Te amo con todo mi corazón.<br>
+      Gracias por tanto, cuenta siempre conmigo y con este amor infinito que siento por ti.<br>
+      Este mes es especial… como todos los meses a tu lado.
+      <br><br>🪷💙✨
+    </div>
+  </div>
 
-<div class="pregunta">
-  ¿Gordita hermosa, quieres ser mi San Valentín? 💙✨
-</div>
+  <script>
+    const btnNo = document.getElementById("no");
+    const btnSi = document.getElementById("si");
+    const pregunta = document.getElementById("pregunta");
+    const final = document.getElementById("final");
+    const musica = document.getElementById("musica");
+    const playMusic = document.getElementById("playMusic");
 
-<div class="botones">
-  <button id="si" onclick="aceptar()">SÍ 💙</button>
-  <button id="no" onmouseover="moverNo()">NO 😅</button>
-</div>
+    let frases = [
+      "di que sí xfiii 🥺",
+      "amoooorrr 💙",
+      "say yes yes 😘",
+      "gordita hermosa 💕",
+      "te regalo un abrazo si dices que sí 🤍",
+      "por más jumbos juntitos 🍔💙",
+      "por más heladitos juntos 🍦💙",
+      "por más besitos juntos 💋💙",
+      "por más risas compartidas ✨",
+      "por más abrazos infinitos 🤍",
+      "porque contigo todo es mejor 💙",
+      "solo di que sí y ya 🥺💫"
+    ];
 
-<div id="final">
-  💙✨<br><br>
-  Te amo con todo mi corazón.<br>
-  Gracias por tanto, cuenta siempre conmigo.<br>
-  Este mes es especial… como todos los meses a tu lado.
-  <br><br>💙✨
-</div>
+    btnNo.addEventListener("click", () => {
+      const random = Math.floor(Math.random() * frases.length);
+      btnNo.textContent = frases[random];
+      btnSi.style.fontSize = 
+        (parseFloat(getComputedStyle(btnSi).fontSize) + 5) + "px";
+    });
 
-<script>
-let escala = 1;
-let frases = [
-  "di que sí xfiii 🥺",
-  "amoooorrr 💙",
-  "say yes yes 😘",
-  "gordita hermosa 💕",
-  "te regalo un abrazo si dices que sí 🤍"
-];
-let i = 0;
+    btnSi.addEventListener("click", () => {
+      pregunta.style.display = "none";
+      btnNo.style.display = "none";
+      btnSi.style.display = "none";
+      playMusic.style.display = "none";
+      final.style.display = "block";
+    });
 
-function moverNo() {
-  const no = document.getElementById("no");
-  no.style.top = Math.random() * 90 + "px";
-  no.style.left = Math.random() * 90 + "px";
-  document.querySelector(".pregunta").innerText = frases[i % frases.length];
-  i++;
-  escala += 0.15;
-  document.getElementById("si").style.transform = "scale(" + escala + ")";
-}
-
-function aceptar() {
-  document.querySelector(".galeria").style.display = "none";
-  document.querySelector(".botones").style.display = "none";
-  document.querySelector(".pregunta").style.display = "none";
-  document.getElementById("final").style.display = "block";
-}
-
-function playMusic() {
-  document.getElementById("music").play();
-}
-</script>
+    playMusic.addEventListener("click", () => {
+      musica.play();
+      playMusic.style.display = "none";
+    });
+  </script>
 
 </body>
 </html>
