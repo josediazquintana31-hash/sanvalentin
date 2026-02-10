@@ -18,7 +18,6 @@
       overflow: hidden;
     }
 
-    /* VIDEO DE FONDO */
     video {
       position: fixed;
       top: 0;
@@ -29,7 +28,6 @@
       z-index: -1;
     }
 
-    /* CONTENEDOR */
     .contenedor {
       height: 100vh;
       display: flex;
@@ -97,7 +95,7 @@
   <div class="contenedor">
     <button id="playMusic">🎵 Reproducir música</button>
 
-    <h1 id="pregunta">¿Quieres estar conmigo siempre? 💙</h1>
+    <h1 id="pregunta">¿Quieres ser mi San Valentín? 💙</h1>
 
     <div>
       <button id="si">Sí 💙</button>
@@ -107,8 +105,9 @@
     <div id="final">
       💙✨<br><br>
       Te amo con todo mi corazón.<br>
-      Gracias por tanto, cuenta siempre conmigo y con este amor infinito que siento por ti.<br>
-      Este mes es especial… como todos los meses a tu lado.
+      Gracias por tanto, cuenta siempre conmigo,<br>
+      sobre todo en este mes tan especial,<br>
+      así como todos los meses que estoy a tu lado.
       <br><br>🪷💙✨
     </div>
   </div>
@@ -127,19 +126,15 @@
       "say yes yes 😘",
       "gordita hermosa 💕",
       "te regalo un abrazo si dices que sí 🤍",
-      "por más jumbos juntitos 🍔💙",
-      "por más heladitos juntos 🍦💙",
-      "por más besitos juntos 💋💙",
-      "por más risas compartidas ✨",
-      "por más abrazos infinitos 🤍",
-      "porque contigo todo es mejor 💙",
-      "solo di que sí y ya 🥺💫"
+      "por más jumbos juntitos 💙",
+      "por más heladitos juntos 💙",
+      "por más besitos juntos 💙"
     ];
 
     btnNo.addEventListener("click", () => {
       const random = Math.floor(Math.random() * frases.length);
       btnNo.textContent = frases[random];
-      btnSi.style.fontSize = 
+      btnSi.style.fontSize =
         (parseFloat(getComputedStyle(btnSi).fontSize) + 5) + "px";
     });
 
